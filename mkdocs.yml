@@ -47,5 +47,6 @@ nav:
   - Django:
       - Админка:
           - Переопределить сохранение формы admin Inline: django/admin/custom_saving_inline.md
-
+      - Работа с файлами:
+          - Редактировать изображение перед сохранением: django/files/make_thumbnail.md
 
