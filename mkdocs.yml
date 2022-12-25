@@ -49,4 +49,7 @@ nav:
           - Переопределить сохранение формы admin Inline: django/admin/custom_saving_inline.md
       - Работа с файлами:
           - Редактировать изображение перед сохранением: django/files/make_thumbnail.md
+  - Django Rest Framework:
+      - ORM:
+          - Сократить количество запросов в БД (Foreign Key): django_rest_framework/orm/select_related.md
 
