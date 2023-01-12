@@ -20,7 +20,7 @@
 from sqlalchemy import Column, String, Integer, Boolean, Table, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
-from src.db.session import Base
+from myapp.db.session import Base
 
 
 class Permission(Base):
@@ -83,8 +83,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, Security
 from starlette.status import HTTP_403_FORBIDDEN
 
-from app.user import models, crud
-from .schemas import TokenPayload
+from myapp.user import models, crud, schemas
 
 
 SECRET_KEY = "udfsdu6%$&(*Y9dHG(&ytdf987gFST*Sg897"
@@ -95,7 +94,7 @@ reusable_oauth2 = OAuth2PasswordBearer(tokenUrl="/api/v1/login/access-token")
 def get_current_user(token: str = Security(reusable_oauth2)):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        token_data = TokenPayload(**payload)
+        token_data = schemas.TokenPayload(**payload)
     except jwt.PyJWTError:
         raise HTTPException(
             status_code=HTTP_403_FORBIDDEN, detail="Could not validate credentials"
@@ -133,8 +132,7 @@ from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, Security
 from starlette.status import HTTP_403_FORBIDDEN
 
-from app.user import models, crud
-from .schemas import TokenPayload
+from myapp.user import models, crud, schemas
 
 
 SECRET_KEY = "udfsdu6%$&(*Y9dHG(&ytdf987gFST*Sg897"
@@ -145,7 +143,7 @@ reusable_oauth2 = OAuth2PasswordBearer(tokenUrl="/api/v1/login/access-token")
 def get_current_user(token: str = Security(reusable_oauth2)):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        token_data = TokenPayload(**payload)
+        token_data = schemas.TokenPayload(**payload)
     except jwt.PyJWTError:
         raise HTTPException(
             status_code=HTTP_403_FORBIDDEN, detail="Could not validate credentials"
