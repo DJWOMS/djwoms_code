@@ -106,19 +106,19 @@ def get_current_user(token: str = Security(reusable_oauth2)):
     return user
 
 
-def check_access(list_permissions: tuple, current_user: models.User):
-    for permission in current_user.permissions:
-        if permission.code_name in list_permissions:
-            return current_user
-    raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
-
-
 class PermissionsRouter:
     def init(self, permissions: tuple):
         self.permissions = permissions
 
+    def check_access(self, current_user: models.User):
+        for permission in current_user.permissions:
+            if permission.code_name in self.permissions:
+                return current_user
+        
+        raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
+    
     def call(self, user: models.User = Depends(get_current_user)):
-        return check_access(list_permissions=self.permissions, current_user=user)
+        return self.check_access(current_user=user)
 ```
 Для начала проверяем токен.
 
