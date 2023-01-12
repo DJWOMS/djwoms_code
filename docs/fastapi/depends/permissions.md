@@ -77,7 +77,7 @@ class TokenPayload(BaseModel):
 
 
 ### Depends permission
-```py linenums="1" hl_lines="15-26" title="myapp/permissions.py"
+```py linenums="1" hl_lines="14-25" title="myapp/permissions.py"
 import jwt
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, Security
@@ -126,7 +126,7 @@ class PermissionsRouter:
 
 Таким образом проверяем токен пользователя и получаем объект текущего пользователя.
 
-```py linenums="1" hl_lines="29-41" title="myapp/permissions.py"
+```py linenums="1" hl_lines="28-40" title="myapp/permissions.py"
 import jwt
 from fastapi.security import OAuth2PasswordBearer
 from fastapi import Depends, HTTPException, Security

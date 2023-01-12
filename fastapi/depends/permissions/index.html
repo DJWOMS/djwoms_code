@@ -900,8 +900,8 @@
 <a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="n">reusable_oauth2</span> <span class="o">=</span> <span class="n">OAuth2PasswordBearer</span><span class="p">(</span><span class="n">tokenUrl</span><span class="o">=</span><span class="s2">&quot;/api/v1/login/access-token&quot;</span><span class="p">)</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a>
-<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="k">def</span> <span class="nf">get_current_user</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Security</span><span class="p">(</span><span class="n">reusable_oauth2</span><span class="p">)):</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="hll">    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="hll"><span class="k">def</span> <span class="nf">get_current_user</span><span class="p">(</span><span class="n">token</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Security</span><span class="p">(</span><span class="n">reusable_oauth2</span><span class="p">)):</span>
+</span><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="hll">    <span class="k">try</span><span class="p">:</span>
 </span><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="hll">        <span class="n">payload</span> <span class="o">=</span> <span class="n">jwt</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">SECRET_KEY</span><span class="p">,</span> <span class="n">algorithms</span><span class="o">=</span><span class="p">[</span><span class="n">ALGORITHM</span><span class="p">])</span>
 </span><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="hll">        <span class="n">token_data</span> <span class="o">=</span> <span class="n">schemas</span><span class="o">.</span><span class="n">TokenPayload</span><span class="p">(</span><span class="o">**</span><span class="n">payload</span><span class="p">)</span>
 </span><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="hll">    <span class="k">except</span> <span class="n">jwt</span><span class="o">.</span><span class="n">PyJWTError</span><span class="p">:</span>
@@ -912,8 +912,8 @@
 </span><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="hll">    <span class="k">if</span> <span class="n">user</span> <span class="o">:=</span> <span class="n">crud</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">token_data</span><span class="o">.</span><span class="n">user_id</span><span class="p">):</span>
 </span><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="hll">        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">404</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;User not found&quot;</span><span class="p">)</span>
 </span><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="hll">    <span class="k">return</span> <span class="n">user</span>
-</span><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="hll">
-</span><a id="__codelineno-2-27" name="__codelineno-2-27"></a>
+</span><a id="__codelineno-2-26" name="__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>
 <a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="k">class</span> <span class="nc">PermissionsRouter</span><span class="p">:</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29"></a>    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">permissions</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
 <a id="__codelineno-2-30" name="__codelineno-2-30"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">permissions</span> <span class="o">=</span> <span class="n">permissions</span>
@@ -998,8 +998,8 @@
 <a id="__codelineno-3-25" name="__codelineno-3-25"></a>    <span class="k">return</span> <span class="n">user</span>
 <a id="__codelineno-3-26" name="__codelineno-3-26"></a>
 <a id="__codelineno-3-27" name="__codelineno-3-27"></a>
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="k">class</span> <span class="nc">PermissionsRouter</span><span class="p">:</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="hll">    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">permissions</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="hll"><span class="k">class</span> <span class="nc">PermissionsRouter</span><span class="p">:</span>
+</span><a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="hll">    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">permissions</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">):</span>
 </span><a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">permissions</span> <span class="o">=</span> <span class="n">permissions</span>
 </span><a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="hll">
 </span><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="hll">    <span class="k">def</span> <span class="nf">check_access</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_user</span><span class="p">:</span> <span class="n">models</span><span class="o">.</span><span class="n">User</span><span class="p">):</span>
