@@ -52,4 +52,7 @@ nav:
   - Django Rest Framework:
       - ORM:
           - Сократить количество запросов в БД (Foreign Key): django_rest_framework/orm/select_related.md
+  - FastAPI:
+      - Depends:
+          - Реализация permissions и параметры Depends: fastapi/depends/permissions.md
 
