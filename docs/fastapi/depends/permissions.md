@@ -106,7 +106,7 @@ def get_current_user(token: str = Security(reusable_oauth2)):
 
 
 class PermissionsRouter:
-    def init(self, permissions: tuple):
+    def __init__(self, permissions: tuple):
         self.permissions = permissions
 
     def check_access(self, current_user: models.User):
@@ -116,7 +116,7 @@ class PermissionsRouter:
         
         raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
     
-    def call(self, user: models.User = Depends(get_current_user)):
+    def __call__(self, user: models.User = Depends(get_current_user)):
         return self.check_access(current_user=user)
 ```
 Для начала проверяем токен.
@@ -155,7 +155,7 @@ def get_current_user(token: str = Security(reusable_oauth2)):
 
 
 class PermissionsRouter:
-    def init(self, permissions: tuple):
+    def __init__(self, permissions: tuple):
         self.permissions = permissions
 
     def check_access(self, current_user: models.User):
@@ -165,7 +165,7 @@ class PermissionsRouter:
         
         raise HTTPException(status_code=400, detail="The user doesn't have enough privileges")
     
-    def call(self, user: models.User = Depends(get_current_user)):
+    def __call__(self, user: models.User = Depends(get_current_user)):
         return self.check_access(current_user=user)
 ```
 Затем создаем класс зависимости который будет вызываться как функция. В него будем передавать список
