@@ -55,4 +55,7 @@ nav:
   - FastAPI:
       - Depends:
           - Реализация permissions и параметры Depends: fastapi/depends/permissions.md
+  - E-commerce - интернет магазин видеоигр:
+      - Схема БД games: ecommerce_my_steam/assets/games_db.svg
+
 
