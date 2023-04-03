@@ -58,5 +58,6 @@ nav:
   - E-commerce - интернет магазин видеоигр:
       - Схема БД games: ecommerce_my_steam/assets/games_db.svg
       - Схема БД users: ecommerce_my_steam/assets/users_db.svg
+      - Схема БД payments: ecommerce_my_steam/assets/payments_db.svg
 
 
